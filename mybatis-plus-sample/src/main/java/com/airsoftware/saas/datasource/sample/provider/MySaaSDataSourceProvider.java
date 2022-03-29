@@ -35,8 +35,8 @@ public class MySaaSDataSourceProvider implements SaaSDataSourceProvider {
         dataSourceProperty.setUrl(jdbcUrl);
         dataSourceProperty.setUsername(dataSourceConfig.getUsername());
         dataSourceProperty.setPassword(dataSourceConfig.getPassword());
-        // 此处存在拼写错误，应为poolName，在dynamic-datasource的后续版本中有修复。
-        dataSourceProperty.setPollName(dsKey);
+        dataSourceProperty.setDriverClassName(dataSourceConfig.getDriverClassName());
+        dataSourceProperty.setPoolName(dsKey);
         
         return saasDataSourceCreator.createDruidDataSource(dataSourceProperty);
     }

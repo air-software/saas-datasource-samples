@@ -44,8 +44,12 @@ public class UserService {
     
     @Transactional
     public List<User> tx() {
-        // 注意此处在事务内的切换不会生效，且可能会报错
-        SaaSDataSource.switchTo("2");
+        // 注意此处在事务内的切换不会生效，且可能会导致异常
+        try {
+            SaaSDataSource.switchTo("2");
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
         return userMapper.selectAll();
     }
     

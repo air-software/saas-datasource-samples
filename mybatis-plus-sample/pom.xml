@@ -4,7 +4,7 @@
     
     <groupId>com.air-software.saas-datasource</groupId>
     <artifactId>mybatis-plus-sample</artifactId>
-    <version>1.1.0</version>
+    <version>1.2.0</version>
     <packaging>jar</packaging>
     
     <parent>
@@ -31,17 +31,16 @@
         <dependency>
             <groupId>com.air-software</groupId>
             <artifactId>saas-datasource-spring-boot-starter</artifactId>
-            <version>1.1.0</version>
+            <version>1.2.0</version>
         </dependency>
         <dependency>
             <groupId>com.baomidou</groupId>
             <artifactId>mybatis-plus-boot-starter</artifactId>
-            <version>3.0.7.1</version>
+            <version>3.5.1</version>
         </dependency>
         <dependency>
             <groupId>mysql</groupId>
             <artifactId>mysql-connector-java</artifactId>
-            <version>5.1.40</version>
         </dependency>
         <dependency>
             <groupId>org.projectlombok</groupId>
