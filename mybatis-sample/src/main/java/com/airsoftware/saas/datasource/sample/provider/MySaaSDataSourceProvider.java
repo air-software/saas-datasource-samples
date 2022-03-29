@@ -35,7 +35,6 @@ public class MySaaSDataSourceProvider implements SaaSDataSourceProvider {
         dataSourceProperty.setUrl(jdbcUrl);
         dataSourceProperty.setUsername(dataSourceConfig.getUsername());
         dataSourceProperty.setPassword(dataSourceConfig.getPassword());
-        dataSourceProperty.setDriverClassName(dataSourceConfig.getDriverClassName());
         dataSourceProperty.setPoolName(dsKey);
         
         return saasDataSourceCreator.createDruidDataSource(dataSourceProperty);
