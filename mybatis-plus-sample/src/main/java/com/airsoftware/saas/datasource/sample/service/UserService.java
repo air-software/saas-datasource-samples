@@ -2,6 +2,7 @@ package com.airsoftware.saas.datasource.sample.service;
 
 import com.airsoftware.saas.datasource.annotation.SaaS;
 import com.airsoftware.saas.datasource.context.SaaSDataSource;
+import com.airsoftware.saas.datasource.context.SaaSDataSourcePool;
 import com.airsoftware.saas.datasource.sample.entity.User;
 import com.airsoftware.saas.datasource.sample.mapper.UserMapper;
 import lombok.extern.slf4j.Slf4j;
@@ -9,7 +10,9 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import javax.annotation.Resource;
+import javax.sql.DataSource;
 import java.util.List;
+import java.util.Map;
 
 @Slf4j
 @Service
@@ -39,6 +42,13 @@ public class UserService {
         log.info("tenant2 userlist={}", userMapper.selectAll());
         
         SaaSDataSource.switchTo("1");
+    
+        // 1.5.0新增的SaaSDataSourcePool示例
+        Map<String, DataSource> map = SaaSDataSourcePool.getAll();
+        log.info("dsPool keys={}", map.keySet());
+        SaaSDataSourcePool.remove("2");
+        log.info("dsPool keys={}", map.keySet());
+        
         return userMapper.selectAll();
     }
     

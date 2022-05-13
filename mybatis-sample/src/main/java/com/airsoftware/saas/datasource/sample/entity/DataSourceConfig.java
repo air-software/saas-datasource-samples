@@ -29,9 +29,4 @@ public class DataSourceConfig implements Serializable {
      **/
     private String password;
     
-    /**
-     * 驱动类名
-     **/
-    private String driverClassName;
-    
 }

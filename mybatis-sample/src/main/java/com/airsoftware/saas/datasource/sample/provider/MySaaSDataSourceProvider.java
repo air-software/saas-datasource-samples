@@ -24,12 +24,14 @@ public class MySaaSDataSourceProvider implements SaaSDataSourceProvider {
     @Resource
     private SaaSDataSourceCreator saasDataSourceCreator;
     
-    public static String SCHEMA_URL_SUFFIX = "?useUnicode=true&characterEncoding=utf8&zeroDateTimeBehavior=convertToNull&useSSL=false&serverTimezone=GMT%2B8&autoReconnect=true&autoReconnectForPools=true&allowMultiQueries=true";
+    public static String JDBC_URL_PREFIX = "jdbc:mysql://";
+    
+    public static String JDBC_URL_SUFFIX = "?useUnicode=true&characterEncoding=utf8&zeroDateTimeBehavior=convertToNull&useSSL=false&serverTimezone=GMT%2B8&autoReconnect=true&autoReconnectForPools=true&allowMultiQueries=true&allowPublicKeyRetrieval=true";
     
     @Override
     public DataSource createDataSource(String dsKey) {
         DataSourceConfig dataSourceConfig = dataSourceConfigMapper.selectById(dsKey);
-        String jdbcUrl = dataSourceConfig.getHost() + dataSourceConfig.getSchemaName() + SCHEMA_URL_SUFFIX;
+        String jdbcUrl = JDBC_URL_PREFIX + dataSourceConfig.getHost() + "/" + dataSourceConfig.getSchemaName() + JDBC_URL_SUFFIX;
         
         DataSourceProperty dataSourceProperty = new DataSourceProperty();
         dataSourceProperty.setUrl(jdbcUrl);

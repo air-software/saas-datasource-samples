@@ -10,7 +10,7 @@ import java.io.Serializable;
 @DS("common")
 public interface DataSourceConfigMapper {
     
-    @Select("select *, schema_name as schemaName, driver_class_name as driverClassName from data_source_config where id = #{id}")
+    @Select("select *, schema_name as schemaName from data_source_config where id = #{id}")
     DataSourceConfig selectById(@Param("id") Serializable id);
 
 }
